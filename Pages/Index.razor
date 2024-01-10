@@ -1,0 +1,34 @@
+﻿@page "/"
+
+@using BlazorApp1.Data
+@inject DatabaseConnection databaseConnection
+
+
+<h1>Notes</h1>
+<div class="loop">
+    @foreach (var model in models)
+    {
+        <div class="card">
+            <p>@model.ID</p>
+            <h2>@model.Title</h2>
+            <p>@model.Body</p>
+        </div>
+    }
+</div>
+
+@code
+{
+    List<Models> models = new();
+    protected override void OnInitialized()
+    {
+        // ReadTable();
+    }
+    public void ReadTable()
+    {  
+        models = databaseConnection.GetNotes();
+    }
+    public void CreateTable()
+    {
+        databaseConnection.AddNote();
+    }
+}

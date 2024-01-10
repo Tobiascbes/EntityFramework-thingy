@@ -1,0 +1,44 @@
+﻿@page "/efdb"
+@using BlazorApp1.Data
+@inject EnFrCRUD EnFrCRUD
+@inject Notebook notes
+<h3>DBEntityFramework</h3>
+
+<h1>Notes</h1>
+<div class="loop">
+    @foreach (var notebook in models)
+    {
+        <div class="card">
+            <p>@notebook.Id</p>
+            <h2>@notebook.Title</h2>
+            <p>@notebook.Body</p>
+        </div>
+    }
+</div>
+
+<div class="Create">
+    <p>Create</p>
+    
+    <input type="text" @bind="notes.Title"/>
+    <input type="text" @bind="notes.Body"/>
+    <button @onclick="CreateTable">Create</button>
+</div>
+
+@code
+{
+    private List<Notebook> models = new();
+    
+    protected override void OnInitialized()
+    {
+        GetAll();
+    }
+    public void GetAll()
+    {
+        models = EnFrCRUD.GetAll();
+    }
+    public void CreateTable()
+    {
+        EnFrCRUD.CreateNote(notes);
+    }
+
+}

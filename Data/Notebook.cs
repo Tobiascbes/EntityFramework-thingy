@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BlazorApp1.Data;
 
-public partial class Notebook
+public class Notebook
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -18,10 +18,12 @@
 
 <div class="Create">
     <p>Create</p>
-    
-    <input type="text" @bind="notes.Title"/>
-    <input type="text" @bind="notes.Body"/>
-    <button @onclick="CreateTable">Create</button>
+    <label for="title">Title</label>
+    <input id="title" name="title" @bind="notes.Title"/>
+    <br />
+    <br />
+    <textarea id="body" @bind="notes.Body" style="resize: none;" rows="25" cols="200"> </textarea>
+    <button @onclick="CreateTable">Save</button>
 </div>
 
 @code
